@@ -8,6 +8,10 @@
             .url = "git+https://github.com/hexops/x11-headers#39d69153febf15537a33b425c57a3831e4a0ab2a",
             .hash = "1220e83ec1e5addab76d30aad3adbbb02ee44fef30d90425c898670e48b495e42027",
         },
+        .@"macos-frameworks" = .{
+            .url = "git+https://github.com/mitchellh/zig-build-macos-sdk.git#ee70f27c08680307fa35ada92e6b2c36e0ff84c6",
+            .hash = "1220b415f529f1c04ed876c2b481e9f8119d353d4e3d4d7c8607ee302d2142e13eca",
+        },
     },
 
     .paths = .{

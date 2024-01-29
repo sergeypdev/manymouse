@@ -24,6 +24,7 @@ pub fn build(b: *std.Build) void {
     lib.addCSourceFiles(.{ .files = &shared_sources });
 
     if (target.getOsTag() == .macos) {
+        lib.addSystemFrameworkPath(b.dependency("macos-frameworks", .{}).path("Frameworks"));
         lib.linkFrameworkNeeded("IOKit");
         lib.addCSourceFiles(.{ .files = &macos_sources });
     }
