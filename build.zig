@@ -27,11 +27,12 @@ pub fn build(b: *std.Build) void {
         lib.linkFrameworkNeeded("IOKit");
         lib.addCSourceFiles(.{ .files = &macos_sources });
     }
-    if (target.isLinux() or target.getOsTag().isBSD()) {
+    if (target.isLinux()) {
         lib.linkLibC();
         lib.addCSourceFiles(.{ .files = &linux_sources });
 
         const x11 = b.dependency("x11-headers", .{}).artifact("x11-headers");
+        // This static library is empty, linking it just to get headers added automatically
         lib.linkLibrary(x11);
     }
     if (target.isWindows()) {
