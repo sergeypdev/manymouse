@@ -23,12 +23,13 @@ pub fn build(b: *std.Build) void {
 
     lib.addCSourceFiles(.{ .files = &shared_sources });
 
-    if (target.getOsTag() == .macos) {
+    const os_tag = target.result.os.tag;
+    if (os_tag == .macos) {
         lib.addSystemFrameworkPath(b.dependency("macos-frameworks", .{}).path("Frameworks"));
         lib.linkFrameworkNeeded("IOKit");
         lib.addCSourceFiles(.{ .files = &macos_sources });
     }
-    if (target.isLinux()) {
+    if (os_tag == .linux) {
         lib.linkLibC();
         lib.addCSourceFiles(.{ .files = &linux_sources });
 
@@ -36,7 +37,7 @@ pub fn build(b: *std.Build) void {
         // This static library is empty, linking it just to get headers added automatically
         lib.linkLibrary(x11);
     }
-    if (target.isWindows()) {
+    if (os_tag == .windows) {
         lib.linkLibC();
         lib.addCSourceFiles(.{ .files = &windows_sources });
     }
