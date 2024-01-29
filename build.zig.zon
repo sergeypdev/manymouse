@@ -1,0 +1,29 @@
+.{
+    .name = "manymouse",
+    .version = "0.0.1",
+    .minimum_zig_version = "0.12.0",
+
+    .dependencies = .{
+        .@"x11-headers" = .{
+            .url = "git+https://github.com/hexops/x11-headers#39d69153febf15537a33b425c57a3831e4a0ab2a",
+            .hash = "1220e83ec1e5addab76d30aad3adbbb02ee44fef30d90425c898670e48b495e42027",
+        },
+    },
+
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "LICENSE.txt",
+        "README.md",
+
+        "manymouse.h",
+
+        "linux_evdev.c",
+        "linux_evdev.c",
+        "macosx_hidmanager.c",
+        "macosx_hidutilities.c",
+        "manymouse.c",
+        "windows_wminput.c",
+        "x11_xinput2.c",
+    },
+}
